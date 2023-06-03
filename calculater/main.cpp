@@ -18,19 +18,31 @@ void Calculator() {
     stack<double> num;
     string exp;
     getline(cin,exp);
+    int cnt = 0;
     for(int i=0;i<exp.length();i++) {
         if(isdigit((exp[i]))) {
-            if(i!=0&&isdigit((exp[i-1]))){
+            if(i==0) {
+                double p = exp[i]-'0';
+                cnt++;
+                while(isdigit(exp[i+1])){
+                    i++;
+                    p = p*10+exp[i]-'0';
+                    cnt++;
+                }
+                num.push(p);
+            }
+            else if(isdigit((exp[i-1]))){
                 double p = num.top();
                 p *= 10;
                 num.pop();
-                num.push(p+exp[i]-'0');
+                double d = p+exp[i]-'0';
+                num.push(d);
             }
             else
                 num.push(exp[i] - '0');
         }
         else{
-            if(i==1)
+            if(i==cnt)
             Operator.push(exp[i]);
             else{
                 if(w[Operator.top()]<w[exp[i]])
