@@ -19,8 +19,16 @@ void Calculator() {
     string exp;
     getline(cin,exp);
     for(int i=0;i<exp.length();i++) {
-        if(isdigit((exp[i])))
-            num.push(exp[i]-'0');
+        if(isdigit((exp[i]))) {
+            if(i!=0&&isdigit((exp[i-1]))){
+                double p = num.top();
+                p *= 10;
+                num.pop();
+                num.push(p+exp[i]-'0');
+            }
+            else
+                num.push(exp[i] - '0');
+        }
         else{
             if(i==1)
             Operator.push(exp[i]);
