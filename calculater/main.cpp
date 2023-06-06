@@ -63,7 +63,7 @@ void Calculator() {
                             num.push(m);
                         }
                         Operator.pop();
-                        Operator.push(exp[i]);
+                        i--;
                     }
                     else{
                         double m = num.top();
