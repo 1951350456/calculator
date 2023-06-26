@@ -42,8 +42,8 @@ void Calculator() {
                 num.push(exp[i] - '0');
         }
         else{
-            if(i==cnt)
-            Operator.push(exp[i]);
+            if(i==cnt||Operator.empty())
+                Operator.push(exp[i]);
             else{
                 if(w[Operator.top()]<w[exp[i]])
                     Operator.push(exp[i]);
